@@ -1,0 +1,936 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Mastering Patterns with Regular Expression</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Group 8" />
+    <meta name="date" content="2024-01-27" />
+    <script src="libs/header-attrs/header-attrs.js"></script>
+    <link href="libs/remark-css/tamu.css" rel="stylesheet" />
+    <link href="libs/remark-css/fc.css" rel="stylesheet" />
+    <link href="libs/remark-css/fc-fonts.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Mastering Patterns with Regular Expression
+]
+.author[
+### Group 8
+]
+.date[
+### January 27, 2024
+]
+
+---
+
+
+
+&lt;style&gt;
+
+.center1 {
+  margin: 0;
+  position: absolute;
+  top: 70%;
+  left: 25%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center2 {
+  margin: 0;
+  position: absolute;
+  top: 70%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center3 {
+  margin: 0;
+  position: absolute;
+  top: 70%;
+  left: 75%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center4 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 35%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+.center5 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center6 {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.center7 {
+  margin: 0;
+  position: absolute;
+  top: 75%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.gg {
+  margin: 0;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.pull-left {
+  float: left;
+  width: 47%;
+}
+.pull-right {
+  float: right;
+  width: 47%;
+}
+
+&lt;/style&gt;
+
+&lt;style type = "text/css"&gt;
+.remark-slide-content{
+  font-size: 32px;
+  padding : 1em 4em 1em 4em;
+} &lt;/style&gt;
+
+
+# Members
+- HUMAIRA KASHMI
+- NANZIBA ADNIN SINTHI
+- ISHTIAQ MAHMUD FAHIM
+- MD. NAZIR HOSEN
+- BIPANTI CHAKMA
+- MOLLA MD. NASIM
+---
+class: inverse, center, middle
+background-image: url(abs.png)
+background-size: contain
+
+#Our Topic
+---
+
+- &lt;b&gt;Regular Expression&lt;/b&gt;
+
+- &lt;b&gt;`stringr`&lt;/b&gt;
+
+- &lt;b&gt;`forcats`&lt;/b&gt;
+
+.center1[
+&lt;img src="reg.png" height = "200" width="150" class = "center"/&gt;
+]
+.center2[
+&lt;img src="st.png" height = "200" width="150" class = "center"/&gt;
+]
+.center3[
+&lt;img src="ft.png" height = "200" width="150" class = "center"/&gt;
+]
+
+---
+
+# What is Regular Expression?
+
+- A sequence of characters that defines a search pattern 
+
+
+- Enables the identification and extraction of specific patterns or sequences of characters  
+
+
+- Provides a standardized and efficient way to describe and manipulate text
+
+---
+
+# A Simple Introduction to RegEx
+
+.center4[
+&lt;img src="regt1.png" height = "400" width="500" class = "center"/&gt;
+]
+.center5[
+&lt;img src="regt2.png" height = "250" width="450" class = "bottom"/&gt;
+]
+
+---
+
+# Some Basic Regex:
+
+
+ `\d` : matches any `digit` &lt;br&gt;
+ `\s` : matches any `whitespace` &lt;br&gt;
+ `[abc]` : matches `a,b or c` &lt;br&gt;
+ `[^abc]` : matches anything `except a,b,c` &lt;br&gt;
+
+ `\w`   : matches any `word character` &lt;br&gt;
+ `{m}`   : specifies `exactly m` occurrences &lt;br&gt;
+ `{m,n}` : specifies a `range` of occurrences 
+
+
+---
+
+class: inverse, center, middle
+background-image: url(abs.png)
+background-size: contain
+
+#Regex symphony with `stringr`
+
+
+---
+
+# Matching Patterns
+
+
+```r
+library(tidyverse)
+```
+
+
+
+```r
+x &lt;- c("banana","Gray","Grey","kiwi",
+       "box","169","F-16")
+```
+
+
+
+```r
+str_view(x,"box") 
+```
+
+```
+## [5] │ &lt;box&gt;
+```
+
+
+```r
+str_view(x,"Gr(a|e)y")
+```
+
+```
+## [2] │ &lt;Gray&gt;
+## [3] │ &lt;Grey&gt;
+```
+
+---
+
+
+# Replace or Extracting Patterns
+
+
+```r
+x &lt;- c("banana","Gray","Grey","kiwi",
+       "box","169","F-16")
+```
+
+
+```r
+str_replace_all(x,"[aeiou]","_")
+```
+
+```
+## [1] "b_n_n_" "Gr_y"   "Gr_y"   "k_w_"   "b_x"    "169"    "F-16"
+```
+
+
+```r
+unlist(str_extract_all(x,"\\d{2,3}"))
+```
+
+```
+## [1] "169" "16"
+```
+
+---
+
+# Adding string together
+
+
+```r
+x &lt;- c("apple","pie","cake")
+
+str_c(x,collapse = " ")
+```
+
+```
+## [1] "apple pie cake"
+```
+
+
+```r
+str_c(x,collapse = "_")
+```
+
+```
+## [1] "apple_pie_cake"
+```
+
+
+
+---
+
+# How it works?
+.center6[
+&lt;img src="tut.png" height = "500" width = "600" class = "center"/&gt;
+]
+
+---
+# Repetition
+.pull-left[
+`?` : matches 0 or 1 occurrence 
+&lt;br&gt;
+&lt;br&gt;
+`+` : matches 0 or more occurrences 
+&lt;br&gt;
+&lt;br&gt;
+`*` :matches 1 or more occurrences 
+&lt;br&gt;
+&lt;br&gt;
+]
+.pull-right[
+&lt;img src="c.png" height = "400" width="500" class = "center"/&gt;
+]
+
+---
+#An Example
+
+Use the dataset `words` to find : &lt;br&gt;
+- &lt;b&gt;`Average` no. of `vowels` per `word`?&lt;/b&gt;
+
+
+```r
+head(words,4)
+```
+
+```
+## [1] "a"        "able"     "about"    "absolute"
+```
+
+```r
+length(words)
+```
+
+```
+## [1] 980
+```
+
+
+---
+
+# Average no. of vowels per word?
+
+
+```r
+dat_f &lt;- tibble(
+  word = words
+)
+```
+&lt;br&gt;
+
+# Str_count
+
+`str_count` Counts the number of occurrences of a pattern within each string
+---
+
+# Average no. of vowels per word?
+
+```r
+dat_fn &lt;- dat_f %&gt;% 
+  mutate(
+    n = 
+      str_count(words,"\\w"), 
+    vowels = 
+      str_count(words,"[aeiou]"), 
+    consonent = 
+      str_count(words,"[^aeiou]")
+  ) 
+head(dat_fn,3)
+nrow(dat_fn)
+```
+
+---
+
+#Average no. of vowels per word?
+
+
+```
+## # A tibble: 3 × 4
+##   word      n vowels consonent
+##   &lt;chr&gt; &lt;int&gt;  &lt;int&gt;     &lt;int&gt;
+## 1 a         1      1         0
+## 2 able      4      2         2
+## 3 about     5      3         2
+```
+
+```
+## [1] 980
+```
+
+`Average :`
+
+
+```r
+mean(dat_fn$vowels)
+```
+
+```
+## [1] 1.991837
+```
+
+
+---
+class: inverse, center, middle
+background-image: url(abs.png)
+background-size: contain
+
+# Intrigating `forcats` with `stringr`
+---
+
+# A Pathological Example
+
+We have a dataset(hypothetical) of `80` people of Bangladesh
+It includes their ;
+
+- &lt;b style="color:red;"&gt;Names&lt;/b&gt;
+- &lt;b style="color:red;"&gt;Emails&lt;/b&gt;
+- &lt;b style="color:red;"&gt;Cities &lt;/b&gt;
+- &lt;b style="color:red;"&gt;Working experiences &lt;/b&gt;
+- &lt;b style="color:red;"&gt;phone numbers&lt;/b&gt;
+
+
+---
+
+# Chunk of the dataset
+
+&lt;img src="untidy.png" height = "364" width="905" class = "center"/&gt;
+
+
+
+---
+
+# How can we organize it?
+
+Firstly, Split the `messy string` into `character vector elements` &lt;br&gt;
+&lt;br&gt;
+
+Secondly,We can remove `Space` at the `begining of each string` &lt;br&gt;
+&lt;br&gt;
+
+Lastly, write `best fitted Regular Expression` for your variables of given dataset to extract them
+
+---
+
+# Extracting data from untidy mess
+
+`Step 1`
+
+Split the messy string into character vector elements
+
+
+```r
+untidy_ext &lt;- str_split_1(untidy,",")
+head(untidy_ext)
+```
+
+```
+## [1] "1"                          " Abdullah Khan"            
+## [3] " abdullah.khan23@gmail.com" " Dhaka"                    
+## [5] " 3 years"                   " +8801712345678"
+```
+
+---
+
+# Extracting data from untidy mess
+
+`Step 2`
+
+Removing Space at the begining of each string 
+
+
+```r
+untidy_ext &lt;- str_replace_all(untidy_ext,"^\\s","")
+head(untidy_ext)
+```
+
+```
+## [1] "1"                         "Abdullah Khan"            
+## [3] "abdullah.khan23@gmail.com" "Dhaka"                    
+## [5] "3 years"                   "+8801712345678"
+```
+
+---
+
+# Extracting data from untidy mess
+
+`step 3`
+
+Writing fitted regular expression for the given dataset to extract them
+
+&lt;br&gt; Name  : `^[A-Za-z]+\\s?[A-Za-z]*\\s[A-Za-z]+$`
+&lt;br&gt; Email : `^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\\.[a-zA-Z]{2,}$`
+&lt;br&gt; Mob No: `^[+880]+\\d{10}$`
+&lt;br&gt; Expr  : `^\\d{1,2}\\s[a-zA-Z]+$`
+&lt;br&gt; City  : `^[a-zA-Z]+$`
+
+---
+
+# Cont
+
+
+```r
+Names &lt;- str_subset(untidy_ext,"^[A-Za-z]+\\s?[A-Za-z]*\\s[A-Za-z]+$")
+Emails &lt;- str_subset(untidy_ext,"^[a-zA-Z0-9._%+-]+@[a-zA-Z]+\\.[a-zA-Z]{2,}$")
+Phone &lt;- str_subset(untidy_ext,"^[+880]+\\d{10}$")
+Experience &lt;- str_subset(untidy_ext,"^\\d{1,2}\\s[a-zA-Z]+$")
+City &lt;- str_subset(untidy_ext,"^[a-zA-Z]+$")
+```
+
+---
+
+# Extracting data from untidy mess
+
+Removing `+880`
+
+
+```r
+Phone_w_cc &lt;- str_replace_all(Phone,"^[+880]*","0")
+```
+
+Removing `years`
+
+
+```r
+Experience_num &lt;- as.numeric(
+  str_replace_all(
+    Experience,"[a-zA-Z]+",""))
+```
+
+---
+
+# Making a dataframe from extracted data
+
+
+```r
+tidy_dat &lt;- tibble(
+  Names = Names,
+  Emails = Emails,
+  Phone = Phone_w_cc,
+  Experience = Experience_num,
+  City = City
+)
+
+nrow(tidy_dat)
+```
+
+```
+## [1] 80
+```
+
+---
+
+# Cont.
+
+
+```r
+tidy_dat %&gt;% 
+  head(3)
+```
+
+
+```
+## # A tibble: 3 × 3
+##   Names         Emails                    City      
+##   &lt;chr&gt;         &lt;chr&gt;                     &lt;chr&gt;     
+## 1 Abdullah Khan abdullah.khan23@gmail.com Dhaka     
+## 2 Fatima Ahmed  fatima_ahmed456@yahoo.com Chittagong
+## 3 Ali Rahman    ali-rahman@hotmail.com    Rajshahi
+```
+
+```
+## # A tibble: 3 × 2
+##   Phone       Experience
+##   &lt;chr&gt;            &lt;dbl&gt;
+## 1 01712345678          3
+## 2 01919283746          5
+## 3 01712345678          2
+```
+
+```
+## [1] 80
+```
+
+---
+
+#Visulization of Email Providers
+
+Extracting `@domain` :
+
+
+```r
+tidy_dat_new &lt;- 
+  tidy_dat %&gt;%
+  select(Emails) %&gt;% 
+  mutate(
+    Email_provider = unlist(str_extract_all(
+      Emails , "@[a-z]+"
+    ))
+    ) 
+```
+
+---
+
+#Basic Visualization
+
+
+```r
+ bp &lt;- 
+ tidy_dat_new %&gt;% 
+  ggplot() +
+  geom_bar(
+    mapping = 
+      aes(x=Email_provider,
+        fill = Email_provider),
+    col = "black"
+  ) +
+  labs(
+    x = "Email Provider",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+---
+
+#Cont.
+
+.gg[
+
+
+&lt;img src="Project_file_files/figure-html/r-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+
+# fct_lump()
+
+`fct_lump()` lumps infrequent levels of a factor into a single "Other" category.
+
+
+```r
+lump &lt;- tidy_dat_new %&gt;% 
+  mutate(
+    Email_provider = unlist(str_extract_all(
+      Emails , "@[a-zA-Z]+"
+    )),
+    Email_provider = fct_lump(Email_provider) 
+  ) 
+```
+
+---
+
+#cont
+
+
+```r
+bp2 &lt;-
+  lump %&gt;% 
+  ggplot() +
+  geom_bar(
+    mapping = 
+      aes(x=Email_provider,
+        fill = Email_provider),
+    col = "black"
+  ) +
+  labs(
+    x = "Email Provider",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+
+
+---
+
+&lt;img src="Project_file_files/figure-html/unnamed-chunk-27-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+
+---
+
+# Visulization of Mobile Operators
+
+`fct_recode()` recodes levels of a factor variable
+
+
+```r
+tidy_dat_opr &lt;-
+tidy_dat %&gt;% 
+  mutate(
+    Operator = unlist(str_extract_all(
+      Phone , "^\\d{3}"
+    )),
+    Operator = fct_recode(
+      Operator,
+      Teletalk = "015",
+      Airtel = "016",
+      Grameen = "017",
+      Robi = "018",
+      Banglalink = "019"
+    ) 
+  )
+```
+
+---
+
+#Cont.
+
+
+```r
+opp &lt;-
+  tidy_dat_opr %&gt;% 
+  select(Operator,City) %&gt;% 
+  ggplot() +
+  geom_bar(
+    aes(x= Operator,
+        fill = City
+    ),
+    col="black"
+  )+
+  labs(
+    x = "Operator",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+```
+
+---
+
+# Visualization
+
+&lt;img src="Project_file_files/figure-html/unnamed-chunk-30-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+
+# Visualizing Average Working Experience
+
+`fct_reorder` reorder the levels of a factor based on the values of another variable
+
+
+```r
+wep &lt;-
+tidy_dat %&gt;%
+mutate(City = fct_reorder(City, Experience)) %&gt;%
+ggplot() +
+geom_point(
+  aes(Experience, 
+      City,
+      col = City),
+  size = 3
+  ) +
+  labs(
+    x = "Average Work Experience"
+  )
+```
+
+
+---
+
+#cont
+
+&lt;img src="Project_file_files/figure-html/unnamed-chunk-32-1.png" width="95%" style="display: block; margin: auto;" /&gt;
+
+---
+class: inverse, center, middle
+background-image: url(abs.png)
+background-size: contain
+
+#Begining Of The End
+
+---
+
+# Puzzles to be Solved
+
+- Regular expressions are powerful tools for string manipulation, easy to learn hard to master
+- `stringr` and `forcats` provide user-friendly interfaces for working with strings and factors in R
+- Practice and experimentation are key to mastering Regular Expressions
+- `Mastering Regular Expressions by Jeffrey Friedl` is a great book to start exploring!
+
+.center7[
+&lt;img src="cat2.png" height = "250" width="300" class = "bottom"/&gt;
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"ratio": "16:9",
+"slideNumberFormat": "%current%",
+"highlightStyle": "ir-black",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
