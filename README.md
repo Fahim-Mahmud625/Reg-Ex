@@ -12,8 +12,7 @@ Regular expressions (regex) are powerful tools used to identify and manipulate p
 
 ## File Structure
 - **`Project_file.Rmd`**: The main R Markdown file for generating the presentation slides.
-- **`libs/`**: Contains supporting libraries and stylesheets for the `xaringan` presentation format.
-- **`output/`**: Includes the generated HTML
+- **`Project_file.html`**: Includes the generated HTML
 
 ## Requirements
 To reproduce or edit the presentation, you need:
